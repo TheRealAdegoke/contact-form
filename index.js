@@ -8,8 +8,12 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://contact-form-inky-theta.vercel.app"],
+    origin: [
+      "https://contact-form-inky-theta.vercel.app",
+      "http://localhost:3000",
+    ],
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+    credentials: true,
   })
 );
 
