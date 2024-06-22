@@ -19,6 +19,9 @@ app.use(
       "https://contact-form-zeta-one.vercel.app",
       "http://localhost:3000",
       "http://localhost:3001",
+      "https://malff.vercel.app",
+      "https://malff.org",
+      "www.malff.org"
     ],
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   })
