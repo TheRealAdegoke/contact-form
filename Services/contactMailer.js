@@ -5,7 +5,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
-  }
+  },
 });
 
 const sendMessage = async (name, email, message) => {
@@ -82,7 +82,6 @@ const sendMessage = async (name, email, message) => {
       }
     });
   });
-
 
   const mailOptions = {
     from: `${email} <noreplay@example.com>`,
@@ -190,7 +189,6 @@ const registerMessage = async (name, email, sport) => {
     });
   });
 
-  
   const mailOptions = {
     from: `${email} <noreplay@example.com>`,
     to: process.env.Owner_Email,
@@ -209,4 +207,4 @@ const registerMessage = async (name, email, sport) => {
   });
 };
 
-module.exports = {sendMessage, registerMessage};
+module.exports = { sendMessage, registerMessage };
