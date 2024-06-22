@@ -8,6 +8,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const app = express();
+const connectDB = require("./Database/connectDB");
 const cors = require("cors");
 const contactRoute = require("./Routes/contactRoutes");
 
@@ -44,14 +45,16 @@ app.get("/", (req, res) => {
 
 app.use("/api", contactRoute);
 
+const port = 3000;
+
 const start = async () => {
-  const port = process.env.PORT;
   try {
+    await connectDB(process.env.MONGO_URL);
     app.listen(port, () => {
-      console.log(`Server is running on ${port}`);
+      console.log(`Server is listening on port ${port}...`);
     });
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 };
 
