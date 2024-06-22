@@ -2,9 +2,9 @@ const {sendMessage, registerMessage} = require("../Services/contactMailer");
 
 const contact = async (req, res) => {
   try {
-    const { name, senderEmail, message } = req.body;
+    const { name, email, message } = req.body;
 
-    sendMessage(name, senderEmail, message);
+    sendMessage(name, email, message);
 
     res.status(200).send({ message: "Message sent!" });
   } catch (error) {
@@ -14,9 +14,9 @@ const contact = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    const { name, senderEmail, sport } = req.body;
+    const { name, email, sport } = req.body;
 
-    registerMessage(name, senderEmail, sport);
+    registerMessage(name, email, sport);
 
     res.status(200).send({ message: "Message sent!" });
   } catch (error) {

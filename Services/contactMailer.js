@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendMessage = async (name, senderEmail, message) => {
+const sendMessage = async (name, email, message) => {
   const messageBody = `
     <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +71,7 @@ const sendMessage = async (name, senderEmail, message) => {
 </html>
   `;
   const mailOptions = {
-    from: `${senderEmail} <noreplay@example.com>`,
+    from: `${email} <noreplay@example.com>`,
     to: process.env.Owner_Email,
     subject: "New Message",
     html: messageBody,
@@ -85,7 +85,7 @@ const sendMessage = async (name, senderEmail, message) => {
   });
 };
 
-const registerMessage = async (name, senderEmail, sport) => {
+const registerMessage = async (name, email, sport) => {
   const messageBody = `
     <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +140,7 @@ const registerMessage = async (name, senderEmail, sport) => {
                             <br>
                             ${name}
                             <br>
-                            Email: ${senderEmail}
+                            Email: ${email}
                         </td>
                     </tr>
 
@@ -160,7 +160,7 @@ const registerMessage = async (name, senderEmail, sport) => {
 </html>
   `;
   const mailOptions = {
-    from: `${senderEmail} <noreplay@example.com>`,
+    from: `${email} <noreplay@example.com>`,
     to: process.env.Owner_Email,
     subject: "New Message",
     html: messageBody,
