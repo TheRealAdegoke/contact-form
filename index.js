@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "https://contact-form-inky-theta.vercel.app",
+      "https://contact-form-zeta-one.vercel.app",
       "http://localhost:3000",
       "http://localhost:3001",
     ],
