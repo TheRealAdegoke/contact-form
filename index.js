@@ -11,6 +11,7 @@ app.use(
     origin: [
       "https://contact-form-inky-theta.vercel.app",
       "http://localhost:3000",
+      "http://localhost:3001",
     ],
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
     credentials: true,
