@@ -1,4 +1,11 @@
-require("dotenv").config();
+// Check if not in production environment, then load environment variables from .env file
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+  console.log("Running in development.");
+} else {
+  console.log("Running in production environment.");
+}
+
 const express = require("express");
 const app = express();
 const cors = require("cors");
