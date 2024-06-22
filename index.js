@@ -1,9 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const contactRoute = require("./Routes/contactRoutes");
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: ["https://contact-form-inky-theta.vercel.app"],
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  })
+);
 
 app.get("/", (req, res) => {
   res.send([
