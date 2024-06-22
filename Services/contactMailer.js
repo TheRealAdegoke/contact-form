@@ -1,13 +1,11 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  port: 465,
-  host: "smtp.gmail.com",
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
-  },
-  secure: true,
+  }
 });
 
 const sendMessage = async (name, email, message) => {
@@ -72,18 +70,35 @@ const sendMessage = async (name, email, message) => {
 
 </html>
   `;
+
+  await new Promise((resolve, reject) => {
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        console.log("Server is ready to take our messages");
+        resolve(success);
+      }
+    });
+  });
+
+
   const mailOptions = {
     from: `${email} <noreplay@example.com>`,
     to: process.env.Owner_Email,
     subject: "New Message",
     html: messageBody,
   };
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log("Email sending error:", error);
-    } else {
-      console.log("Email sent:", info.response);
-    }
+
+  await new Promise(() => {
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log("Email sending error:", error);
+      } else {
+        console.log("Email sent:", info.response);
+      }
+    });
   });
 };
 
@@ -161,18 +176,36 @@ const registerMessage = async (name, email, sport) => {
 
 </html>
   `;
+
+  await new Promise((resolve, reject) => {
+    // verify connection configuration
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        console.log("Server is ready to take our messages");
+        resolve(success);
+      }
+    });
+  });
+
+  
   const mailOptions = {
     from: `${email} <noreplay@example.com>`,
     to: process.env.Owner_Email,
     subject: "New Message",
     html: messageBody,
   };
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log("Email sending error:", error);
-    } else {
-      console.log("Email sent:", info.response);
-    }
+
+  await new Promise(() => {
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log("Email sending error:", error);
+      } else {
+        console.log("Email sent:", info.response);
+      }
+    });
   });
 };
 
